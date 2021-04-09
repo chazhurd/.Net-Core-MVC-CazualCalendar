@@ -15,16 +15,16 @@ namespace WebApplication1.Controllers
     public class CalendarEventController : Controller
     {
       [HttpPost]
-      public ActionResult CreateEvent(Events calendarEvent)
+      public ActionResult CreateEvent(Event calendarEvent)
         {
             var tokenFile = "C:\\Users\\vanil\\source\\repos\\WebApplication1\\WebApplication1\\Files\\token.json";
             var tokens = JObject.Parse(System.IO.File.ReadAllText(tokenFile));
 
             RestClient restClient = new RestClient();
             RestRequest request = new RestRequest();
-
-            calendarEvent.Start.DateTime = DateTime.Parse(calendarEvent.Start.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffk");
-            calendarEvent.End.DateTime = DateTime.Parse(calendarEvent.End.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffk");
+            //month - day - year
+            calendarEvent.Start.DateTime = DateTime.Parse(calendarEvent.Start.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
+            calendarEvent.End.DateTime = DateTime.Parse(calendarEvent.End.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
 
             var model = JsonConvert.SerializeObject(calendarEvent, new JsonSerializerSettings
             {
@@ -45,7 +45,7 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index", "Home", new { status = "success" });
             }
-
+            var chcker = response.ErrorMessage;
             return View("Error");
         }
     }
