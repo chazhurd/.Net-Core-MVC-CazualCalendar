@@ -187,6 +187,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Files\token.json" />
     <Content Include="Views\CalendarEvent\CreateEvent.cshtml" />
+    <Content Include="Views\CalendarEvent\AllEvents.cshtml" />
+    <Content Include="Views\CalendarEvent\Event.cshtml" />
+    <Content Include="Views\CalendarEvent\UpdateEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

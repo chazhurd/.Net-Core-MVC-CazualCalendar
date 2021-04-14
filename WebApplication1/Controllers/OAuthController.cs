@@ -8,12 +8,13 @@ namespace BasicMVCGoogleCalendar.Controllers
     public class OAuthController:Controller
     {
 
-        public void Callback(string code, string error, string state)
+        public ActionResult Callback(string code, string error, string state)
         {
             if (string.IsNullOrWhiteSpace(error))
             {
                 this.GetTokens(code);
             }
+            return RedirectToAction("Index", "Home", new { status = "AccessGranted" });
         }
 
         public ActionResult RefreshToken()
@@ -45,7 +46,7 @@ namespace BasicMVCGoogleCalendar.Controllers
             return View("Error");
         }
 
-        public ActionResult RevokeToken()
+        public ActionResult RevokeToken(string identifier)
         {
             var tokenFile = "C:\\Users\\vanil\\source\\repos\\WebApplication1\\WebApplication1\\Files\\token.json";
             var credentialsFile = "C:\\Users\\vanil\\source\\repos\\WebApplication1\\WebApplication1\\Files\\credentials.json";

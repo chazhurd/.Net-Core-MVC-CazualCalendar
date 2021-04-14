@@ -19,6 +19,7 @@ namespace WebApplication1.Models
             };
 
         }
+        public string Id { get; set; }
 
         public string Summary { get; set; }
 
