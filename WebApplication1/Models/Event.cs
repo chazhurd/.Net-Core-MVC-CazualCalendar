@@ -19,6 +19,8 @@ namespace WebApplication1.Models
             };
 
         }
+       public List<Attendee> Attendees { get; set; }
+
         public string Id { get; set; }
 
         public string Summary { get; set; }
@@ -30,10 +32,14 @@ namespace WebApplication1.Models
         public EventDateTime End { get; set; }
     }
 }
-
 public class EventDateTime
 {
     public string DateTime { get; set; }
 
     public string TimeZone { get; set; }
+}
+
+public class Attendee
+{
+    public string Email { get; set; }
 }

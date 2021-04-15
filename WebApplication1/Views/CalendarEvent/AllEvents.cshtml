@@ -3,26 +3,30 @@
 
 @if(Model.Count !=0)
 {
-<div>
+<div id="Container">
     @foreach (Event calendarEvent in Model)
     {
-    <div style="margin: 30px" class="row">
-        <a style="cursor: pointer; text-decoration: none" class="col-sm-4" onclick="location.href = '@Url.Action("Event", "CalendarEvent", new {identifier = calendarEvent.Id})'">
-            <div>
+    <div style="width: 33%; display: inline-block" class="row" id="Event" >
+            <div id="DetailsEvent">
                 <p>Summary: @calendarEvent.Summary</p>
                 <p>Description: @calendarEvent.Description</p>
                 <p>Start Date Time: @calendarEvent.Start.DateTime</p>
                 <p>End Date Time: @calendarEvent.End.DateTime</p>
+                @if (@calendarEvent.Attendees != null)
+                {
+                    <p> Attendee: @calendarEvent.Attendees[0].Email </p>
+                }
             </div>
-        </a>
-        <div>
+       @* <div>
             <button class="btn btn-primary" style="margin-top:10px;" onclick="location.href = '@Url.Action("UpdateEvent", "CalendarEvent", new { identifier = calendarEvent.Id })'">Edit</button>
         </div>
         <div>
             <button class="btn btn-primary" style="margin-top: 10px;" onclick="location.href = '@Url.Action("DeleteEvent", "CalendarEvent", new { identifier = calendarEvent.Id })'">Delete</button>
-        </div>
+        </div>*@
 
     </div>
+    <br />
+    <br />
     }
 </div>
 }else
