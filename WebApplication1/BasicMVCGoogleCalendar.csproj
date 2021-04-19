@@ -159,9 +159,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imgs\background.jpg" />
+    <Content Include="Imgs\musicequipment.png" />
     <Content Include="Imgs\cazual.png" />
+    <Content Include="Imgs\contact.jpg" />
+    <Content Include="Imgs\headphones.jpg" />
+    <Content Include="Imgs\lense.jpg" />
+    <Content Include="Imgs\MAIN-dark-studio.jpg" />
     <Content Include="Imgs\partay.jpg" />
     <Content Include="Imgs\pnwBubble.png" />
+    <Content Include="Imgs\recordingDark.jpg" />
     <Content Include="Imgs\wrappedUp.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
