@@ -1,0 +1,18 @@
+﻿
+<body>
+    <div id="BookingContainer">
+        <h1>Cazual Booking</h1>
+        <h4>Live Events and Consulting</h4>
+        <p style="background-color:lightblue; border:double; border-color: whitesmoke"> To schedule a live event or consulting, simply fill the form out below and send it off! </p>
+        <div id="createEvent" style="background-color: lightblue">
+            @RenderPage("~/Views/CalendarEvent/CreateEvent.cshtml")
+        </div>
+        <br />
+        <hr />
+        <br />
+        <h4> Up-To-Date CZL Calendar</h4>
+        <div id="gCalContainer"></div>
+        <div style="overflow-x:scroll; min-width: 300px; max-width :50%; margin:auto"><iframe src="https://calendar.google.com/calendar/embed?src=cazualpnw%40gmail.com&ctz=America%2FLos_Angeles" style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe></div>
+
+    </div>
+</body>

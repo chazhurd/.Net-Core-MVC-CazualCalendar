@@ -202,6 +202,7 @@
     <Content Include="Views\CalendarEvent\AllEvents.cshtml" />
     <Content Include="Views\CalendarEvent\Event.cshtml" />
     <Content Include="Views\CalendarEvent\UpdateEvent.cshtml" />
+    <Content Include="Views\CalendarEvent\BookEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

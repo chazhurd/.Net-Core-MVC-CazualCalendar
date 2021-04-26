@@ -13,6 +13,10 @@ using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     public class CalendarEventController : Controller { 
+        public ActionResult BookEvent()
+        {
+            return View();
+        }
 
         public ActionResult DeleteEvent(string identifier)
         {
