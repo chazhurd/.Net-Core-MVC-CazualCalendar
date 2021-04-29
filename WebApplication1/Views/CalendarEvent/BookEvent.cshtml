@@ -1,18 +1,25 @@
 ﻿
 <body>
-    <div id="BookingContainer">
-        <h1>Cazual Booking</h1>
-        <h4>Live Events and Consulting</h4>
-        <p style="background-color:lightblue; border:double; border-color: whitesmoke"> To schedule a live event or consulting, simply fill the form out below and send it off! </p>
-        <div id="createEvent" style="background-color: lightblue">
-            @RenderPage("~/Views/CalendarEvent/CreateEvent.cshtml")
+    <div id="BookingContainer" style="">
+        <div id="Into" style="width:101%; margin: auto; padding: 5px; overflow-x: hidden; align-content: center">
+            <img src="~/Imgs/bookBackground.jpg" style="max-width: 100%" />
         </div>
+        <hr />
+        <div id="ScheduleContainer" style="width:101%; background-color: rgb(5,29,82,.46); align-content: center; text-align: center; color: white">
+            <h1 style="color: red"><b>Cazual Booking</b></h1>
+            <h4 style="color: black">Live Events and Consulting</h4>
+            <p style="border:double; border-color: whitesmoke"> To schedule a live event or consulting, simply fill the form out below and send it off! </p>
+        </div>
+            <div id="createEvent" style="background-color: rgb(5,29,82,.46); color:white">
+                @RenderPage("~/Views/CalendarEvent/CreateEvent.cshtml")
+            </div>
         <br />
+        
         <hr />
         <br />
-        <h4> Up-To-Date CZL Calendar</h4>
-        <div id="gCalContainer"></div>
-        <div style="overflow-x:scroll; min-width: 300px; max-width :50%; margin:auto"><iframe src="https://calendar.google.com/calendar/embed?src=cazualpnw%40gmail.com&ctz=America%2FLos_Angeles" style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe></div>
-
+        <div id="gCalContainer" style="text-align: center">
+            <h4 style="color:white"> Up-To-Date CZL Calendar</h4>
+            <div style="overflow-x:scroll; min-width: 300px; max-width :50%; margin:auto"><iframe src="https://calendar.google.com/calendar/embed?src=cazualpnw%40gmail.com&ctz=America%2FLos_Angeles" style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe></div>
+        </div>
     </div>
 </body>

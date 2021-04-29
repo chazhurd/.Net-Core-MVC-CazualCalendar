@@ -3,25 +3,26 @@ var winWidth = window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;
 
-function MoveHeaderLeft() {
+function MoveStudioRight() {
 
     var JumboPic = document.getElementById("JumboPic");
     var moveStudio = new TimelineMax();
     if (winWidth < 600) {
-        moveStudio.fromTo(JumboPic, 20, { left: "-100px" }, { left: "-1590px" })
-            .fromTo(JumboPic, 20, { left: "-1590px" }, { left: "-100px" });
+        moveStudio.fromTo(JumboPic, 20, { left: "-1590px" }, { left: "-100px" })
+            .fromTo(JumboPic, 20, { left: "-100px" }, { left: "-1590px" });
+           
         var switchStudio = setInterval(function () {
             var moveStudio2 = new TimelineMax();
-            moveStudio2.fromTo(JumboPic, 20, { left: "-100px" }, { left: "-1590px" })
-                .fromTo(JumboPic, 20, { left: "-1590px" }, { left: "-100px" });
+            moveStudio2.fromTo(JumboPic, 20, { left: "-1590px" }, { left: "-100px" })
+                .fromTo(JumboPic, 20, { left: "-100px" }, { left: "-1590px" });
         }, 41000);
     } else {
-        moveStudio.fromTo(JumboPic, 20, { left: "-100px" }, { left: "-590px" })
-            .fromTo(JumboPic, 20, { left: "-1590px" }, { left: "-100px" });
+        moveStudio.fromTo(JumboPic, 20, { left: "-590px" }, { left: "-100px" })
+            .fromTo(JumboPic, 20, { left: "-100px" }, { left: "-590px" });
         var switchStudio = setInterval(function () {
             var moveStudio2 = new TimelineMax();
-            moveStudio2.fromTo(JumboPic, 20, { left: "-100px" }, { left: "-590px" })
-                .fromTo(JumboPic, 20, { left: "-590px" }, { left: "-100px" });
+            moveStudio2.fromTo(JumboPic, 20, { left: "-590px" }, { left: "-100px" })
+                .fromTo(JumboPic, 20, { left: "-100px" }, { left: "-590px" });
         }, 41000);
     }
 

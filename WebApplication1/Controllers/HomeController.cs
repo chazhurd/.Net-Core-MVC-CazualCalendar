@@ -9,6 +9,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult Index()
         {
+            ViewData["warn"] = false;
             return View();
         }
         public ActionResult OauthRedirect()

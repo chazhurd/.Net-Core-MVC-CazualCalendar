@@ -1,6 +1,7 @@
 ﻿using Google.Apis.Calendar.v3.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -23,13 +24,17 @@ namespace WebApplication1.Models
 
         public string Id { get; set; }
 
-        public string Summary { get; set; }
 
-        public string Description { get; set; }
 
-        public EventDateTime Start { get; set; }
 
-        public EventDateTime End { get; set; }
+        [Required(ErrorMessage = "A Summary of the Event is required")] public string Summary { get; set; }
+
+
+        [Required(ErrorMessage = "A Description is required")] public string Description { get; set; }
+
+        [Required(ErrorMessage = "A Start Time is required")] public EventDateTime Start { get; set; }
+
+        [Required(ErrorMessage = "An End Time is required")] public EventDateTime End { get; set; }
     }
 }
 public class EventDateTime

@@ -144,35 +144,47 @@ namespace WebApplication1.Controllers
       [HttpPost]
       public ActionResult CreateEvent(Event calendarEvent)
         {
+           
             var tokenFile = "C:\\Users\\vanil\\source\\repos\\WebApplication1\\WebApplication1\\Files\\token.json";
             var tokens = JObject.Parse(System.IO.File.ReadAllText(tokenFile));
 
             RestClient restClient = new RestClient();
             RestRequest request = new RestRequest();
             //month - day - year
-            calendarEvent.Start.DateTime = DateTime.Parse(calendarEvent.Start.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
-            calendarEvent.End.DateTime = DateTime.Parse(calendarEvent.End.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
+            DateTime dt;
+            var isValid = DateTime.TryParse(calendarEvent.Start.DateTime, out dt);
 
-            var model = JsonConvert.SerializeObject(calendarEvent, new JsonSerializerSettings
+            if (isValid)
             {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
+                calendarEvent.Start.DateTime = DateTime.Parse(calendarEvent.Start.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
+                calendarEvent.End.DateTime = DateTime.Parse(calendarEvent.End.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
 
-            });
+                var model = JsonConvert.SerializeObject(calendarEvent, new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
 
-            request.AddQueryParameter("key", "AIzaSyBPhlWq_ZZqOj1crvD7cOXOCU9VY6cgnWI");
-            request.AddHeader("Authorization", "Bearer " + tokens["access_token"]);
-            request.AddHeader("Accept", "application/json");
-            request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", model, ParameterType.RequestBody);
+                });
 
-            restClient.BaseUrl = new System.Uri("https://www.googleapis.com/calendar/v3/calendars/primary/events");
-            var response = restClient.Post(request);
+                request.AddQueryParameter("key", "AIzaSyBPhlWq_ZZqOj1crvD7cOXOCU9VY6cgnWI");
+                request.AddHeader("Authorization", "Bearer " + tokens["access_token"]);
+                request.AddHeader("Accept", "application/json");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", model, ParameterType.RequestBody);
 
-            if(response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                return RedirectToAction("Index", "Home", new { status = "success" });
+                restClient.BaseUrl = new System.Uri("https://www.googleapis.com/calendar/v3/calendars/primary/events");
+                var response = restClient.Post(request);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return RedirectToAction("Index", "Home", new { status = "success" });
+                }
+                return View("Error");
             }
-            return View("Error");
+            else
+            {
+                ViewData["warn"] = true;
+                return View("Index");
+            }
         }
     }
 }
