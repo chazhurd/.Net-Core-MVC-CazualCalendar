@@ -15,7 +15,21 @@ namespace WebApplication1.Controllers
     public class CalendarEventController : Controller { 
         public ActionResult BookEvent()
         {
+            ViewData["warning"] = false;
+            ViewData["booked"] = false;
             return View();
+        }
+        public ActionResult BookError()
+        {
+            ViewData["warning"] = true;
+            ViewData["booked"] = false;
+            return View("BookEvent");
+        }
+        public ActionResult Booked()
+        {
+            ViewData["warning"] = false;
+            ViewData["booked"] = true;
+            return View("BookEvent");
         }
 
         public ActionResult DeleteEvent(string identifier)
@@ -150,21 +164,18 @@ namespace WebApplication1.Controllers
 
             RestClient restClient = new RestClient();
             RestRequest request = new RestRequest();
-            //month - day - year
             DateTime dt;
             var isValid = DateTime.TryParse(calendarEvent.Start.DateTime, out dt);
-
+            
             if (isValid)
             {
                 calendarEvent.Start.DateTime = DateTime.Parse(calendarEvent.Start.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
                 calendarEvent.End.DateTime = DateTime.Parse(calendarEvent.End.DateTime).ToString("yyyy-MM-dd'T'HH:mm:ss.fffK");
-
                 var model = JsonConvert.SerializeObject(calendarEvent, new JsonSerializerSettings
                 {
                     ContractResolver = new CamelCasePropertyNamesContractResolver()
 
                 });
-
                 request.AddQueryParameter("key", "AIzaSyBPhlWq_ZZqOj1crvD7cOXOCU9VY6cgnWI");
                 request.AddHeader("Authorization", "Bearer " + tokens["access_token"]);
                 request.AddHeader("Accept", "application/json");
@@ -176,14 +187,13 @@ namespace WebApplication1.Controllers
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    return RedirectToAction("Index", "Home", new { status = "success" });
+                    return RedirectToAction("Booked", "CalendarEvent", new { status = "Booked" });
                 }
                 return View("Error");
             }
             else
             {
-                ViewData["warn"] = true;
-                return View("Index");
+                return RedirectToAction("BookError", "CalendarEvent", new { status = "IncorrectEventParameters" });
             }
         }
     }

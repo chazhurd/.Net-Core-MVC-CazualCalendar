@@ -63,7 +63,6 @@
         <div style="width:100%; overflow-x: hidden; padding: 10px" class="container">
             <a href="/CalendarEvent/AllEvents" class="btn btn-primary btn-info" style="position:relative; left:-20px;">See Events &raquo;</a>
             <a href="/CalendarEvent/BookEvent" class="btn btn-primary btn-info" style="position:relative; left:-20px;">Book Events &raquo;</a>
-            @*  <div style="background-color: lightgreen; border-radius:3px 4px; border-color:darkgreen; border-width:4px; width: 140px; font-size: 20px; text-align: center; color: white; height: 40px; padding: 5px"> @Html.ActionLink("Book Here", "BookEvent", "CalendarEvent")&raquo;</div>*@
         </div>
     </div>
 </div>
@@ -71,30 +70,22 @@
 <div class="card">
     <div class="cardContainer" style="color:cyan">
         <div style="width:100%; height: 300px; overflow-y:hidden; overflow-x: hidden; text-align:center; position: relative; margin-top: 10px" class="container">
-            <img src="~/Imgs/recordingDark.jpg" style="opacity: 0.9; position:relative; top: -600px; left: -1590px; z-index: 0" width="2000" id="JumboPic" onload="MoveHeaderLeft()" />
+            <img src="~/Imgs/recordingDark.jpg" style="opacity: 0.9; position:relative; top: -600px; left: -1590px; z-index: 0" width="2000" id="JumboPic" onload="MoveStudioRight()" />
         </div>
         <h2 style="margin-top: 10px; z-index: 1;"><b>Music Production</b></h2>
         <p>Professional overseer, manager, and guider of the process of producing and recording epic songs. </p>
         <div style="width:100%; overflow-x: hidden; padding: 10px" class="container">
-            <a href="~/CalendarEvent/BookEvent" class="btn btn-primary btn-info">Book Consultation &raquo;</a>
+            <a href="~/CalendarEvent/BookEvent" class="btn btn-primary btn-info" style="position:relative; left:-20px;">Book Consultation &raquo;</a>
         </div>
     </div>
 </div>
-
-@if ((bool)ViewData["warn"])
-{
-    <div class="alert alert-block" id="warn">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <h4>Warning!</h4>
-        Best check yo self, you're not...
-    </div>
-}
 
 <button class="btn btn-primary" style="margin-top: 20px;" onclick="location.href = '@Url.Action("OauthRedirect", "Home")'">Sign In</button>
 <button class="btn btn-primary" style="margin-top: 20px; margin-left: 10px;" onclick="location.href = '@Url.Action("RefreshToken", "OAuth")'">Refresh Token</button>
 <button class="btn btn-primary" style="margin-top: 20px; margin-left: 10px;" onclick="location.href = '@Url.Action("RevokeToken", "OAuth")'">Revoke Token</button>
 
 
-<div id="event">
+@*<div id="event">
     @RenderPage("~/Views/CalendarEvent/CreateEvent.cshtml")
 </div>
+*@
