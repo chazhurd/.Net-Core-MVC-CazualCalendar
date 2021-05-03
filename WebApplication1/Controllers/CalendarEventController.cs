@@ -12,9 +12,18 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class CalendarEventController : Controller { 
+    public class CalendarEventController : Controller {
+        bool liveEvent = true;
         public ActionResult BookEvent()
         {
+            liveEvent = true;
+            ViewData["warning"] = false;
+            ViewData["booked"] = false;
+            return View();
+        }
+        public ActionResult BookConsultation()
+        {
+            liveEvent = false;
             ViewData["warning"] = false;
             ViewData["booked"] = false;
             return View();
@@ -25,11 +34,23 @@ namespace WebApplication1.Controllers
             ViewData["booked"] = false;
             return View("BookEvent");
         }
+        public ActionResult ConsultError()
+        {
+            ViewData["warning"] = true;
+            ViewData["booked"] = false;
+            return View("BookConsultation");
+        }
         public ActionResult Booked()
         {
             ViewData["warning"] = false;
             ViewData["booked"] = true;
             return View("BookEvent");
+        }
+        public ActionResult BookedConsult()
+        {
+            ViewData["warning"] = false;
+            ViewData["booked"] = true;
+            return View("BookConsultation");
         }
 
         public ActionResult DeleteEvent(string identifier)
@@ -187,7 +208,11 @@ namespace WebApplication1.Controllers
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    return RedirectToAction("Booked", "CalendarEvent", new { status = "Booked" });
+                    if (liveEvent)
+                        return RedirectToAction("Booked", "CalendarEvent", new { status = "Booked" });
+                    else
+                        return RedirectToAction("BookedConsult", "CalendarEvent", new { status = "Booked" });
+
                 }
                 return View("Error");
             }

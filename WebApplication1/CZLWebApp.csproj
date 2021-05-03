@@ -161,12 +161,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imgs\background.jpg" />
+    <Content Include="Imgs\bookEvent.jpg" />
+    <Content Include="Imgs\consult.jpg" />
+    <Content Include="Imgs\intro.jpg" />
     <Content Include="Imgs\musicequipment.png" />
     <Content Include="Imgs\cazual.png" />
     <Content Include="Imgs\contact.jpg" />
     <Content Include="Imgs\headphones.jpg" />
     <Content Include="Imgs\lense.jpg" />
     <Content Include="Imgs\MAIN-dark-studio.jpg" />
+    <Content Include="Imgs\neonLine.png" />
     <Content Include="Imgs\partay.jpg" />
     <Content Include="Imgs\pnwBubble.png" />
     <Content Include="Imgs\recordingDark.jpg" />
@@ -204,6 +208,7 @@
     <Content Include="Views\CalendarEvent\Event.cshtml" />
     <Content Include="Views\CalendarEvent\UpdateEvent.cshtml" />
     <Content Include="Views\CalendarEvent\BookEvent.cshtml" />
+    <Content Include="Views\CalendarEvent\BookConsultation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

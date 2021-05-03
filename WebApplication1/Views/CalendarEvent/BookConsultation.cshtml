@@ -1,14 +1,12 @@
-﻿
-<body>
+﻿<body>
     <div id="BookingContainer" style="">
         <div id="Into" style="width:101%; margin: auto; padding: 5px; overflow-x: hidden; align-content: center">
-            <img src="~/Imgs/bookEvent.jpg" style="max-width: 100%" />
+            <img src="~/Imgs/consult.jpg" style="max-width: 100%" />
         </div>
         <hr />
         <div id="ScheduleContainer" style="width:101%; background-color: rgb(5,29,82,.46); align-content: center; text-align: center; color: white">
-            <h1 style="color: red"><b>Cazual Booking</b></h1>
-            <h4 style="color: white">Live Events and Consulting</h4>
-            <p style="border:double; border-color: whitesmoke"> To schedule a live event or consulting, simply fill the form out below and send it off! </p>
+            <h1 style="color: red"><b>Cazual Consultation</b></h1>
+            <p style="border:double; border-color: whitesmoke"> To schedule a consultation, simply fill the form out below and send it off! </p>
         </div>
         @if ((bool)ViewData["warning"])
         {
@@ -31,9 +29,11 @@
                 <h4>Booked!</h4>
                 Your booking has been approved for review.<br />
                 Whats Next?<br />
-                <ul><li>We will review the Booking</li>
-                <li>We will email and/or text you to confirm or deny</li>
-                <li>A itinarary/contract will be made</li></ul>
+                <ul>
+                    <li>We will review the Consulatation</li>
+                    <li>We will email and/or text you to confirm or deny</li>
+                    <li>A itinarary will be made</li>
+                </ul>
             </div>
         }
         <br />
