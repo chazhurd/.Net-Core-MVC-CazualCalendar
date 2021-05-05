@@ -1,4 +1,4 @@
-# .Net-Core-MVC-CazualCalendar
+# ASP.NET Web Application
 A site to allow users to book time with czl entertainment via Google Calendar. Phone first design, using .Net MVC with entity framework. 
 
 <img width="960" alt="2021-04-30" src="https://user-images.githubusercontent.com/52184026/116763587-ca77b080-a9d2-11eb-94bf-376363007f59.png">
