@@ -1,0 +1,17 @@
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\DataLibrary.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\DataLibrary.pdb
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\Dapper.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Security.AccessControl.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Security.Permissions.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\Dapper.xml
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Security.AccessControl.xml
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Security.Permissions.xml
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.csprojAssemblyReference.cache
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.csproj.CoreCompileInputs.cache
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.csproj.CopyComplete
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.pdb

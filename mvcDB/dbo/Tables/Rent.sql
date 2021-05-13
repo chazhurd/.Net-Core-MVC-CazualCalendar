@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Rent]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [FirstName] NVARCHAR(50) NULL, 
+    [LastName] NVARCHAR(50) NULL, 
+    [Email] NVARCHAR(100) NULL, 
+    [Item] NVARCHAR(100) NULL
+)
