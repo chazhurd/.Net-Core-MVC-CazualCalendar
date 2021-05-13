@@ -1,0 +1,48 @@
+﻿<body>
+    <div id="BookingContainer" style="">
+        <div id="Into" style="width:101%; margin: auto; padding: 5px; overflow-x: hidden; align-content: center">
+            <img src="~/Imgs/consult.jpg" style="max-width: 100%" />
+        </div>
+        <hr />
+        <div id="ScheduleContainer" style="width:101%; background-color: rgb(5,29,82,.46); align-content: center; text-align: center; color: white">
+            <h1 style="color: red"><b>Cazual Consultation</b></h1>
+            <p style="border:double; border-color: whitesmoke"> To schedule a consultation, simply fill the form out below and send it off! </p>
+        </div>
+        @if ((bool)ViewData["warning"])
+        {
+            <div class="alert alert-block" id="warn" style="color: black; text-align: center; background-color: yellow; border-radius: 4px 4px; width: 300px; margin: auto;">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4>Warning!</h4>
+                The time input is incorrect. Type the date MM/DD/YYYY H:MM AM/PM (ie 04/30/2020 1:00PM)
+            </div>
+        }
+        @if (!(bool)ViewData["booked"])
+        {
+            <div id="createEvent" style="background-color: rgb(5,29,82,.46); color:white">
+                @RenderPage("~/Views/CalendarEvent/CreateEvent.cshtml")
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-block" id="success" style="color: white; text-align: center; background-color: mediumblue; border-radius: 4px 4px; width: 300px; margin: auto;">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4>Booked!</h4>
+                Your booking has been approved for review.<br />
+                Whats Next?<br />
+                <ul>
+                    <li>We will review the Consulatation</li>
+                    <li>We will email and/or text you to confirm or deny</li>
+                    <li>A itinarary will be made</li>
+                </ul>
+            </div>
+        }
+        <br />
+
+        <hr />
+        <br />
+        <div id="gCalContainer" style="text-align: center">
+            <h4 style="color:white"> Up-To-Date CZL Calendar</h4>
+            <div style="overflow-x:scroll; min-width: 300px; max-width :50%; margin:auto"><iframe src="https://calendar.google.com/calendar/embed?src=cazualpnw%40gmail.com&ctz=America%2FLos_Angeles" style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe></div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,31 @@
+﻿
+<div style="margin-top:50px;">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <form method="post" action="CreateEvent">
+        <div class="row" style="margin:10px;">
+            <label for="Summary" class="col-sm-3">Summary:</label>
+            <input type="text" class="col-sm-1 form-control" name="Summary" value="" autocomplete="off" style=" float: right" required="required" />
+        </div>
+        <div class="row" style="margin:10px;">
+            <label for="Description" class="col-sm-3">Description:</label>
+            <input type="text" class="col-sm-1 form-control" name="Description" value="" autocomplete="off" style=" float: right" required="required" />
+        </div>
+        <div class="row" style="margin:10px;">
+            <label for="Attendees" class="col-sm-3">Your Email:</label>
+            <input type="text" class="col-sm-1 form-control" name="Attendees[0].Email" value="" autocomplete="off" style=" float: right" required="required" />
+        </div>
+        <div class="row" style="margin:10px;">
+            <label for="Start" class="col-sm-3">Start Date Time:</label>
+
+            <input type="datetime" class="col-sm-1 form-control" name="Start.DateTime" value="Month/Day/Year 1:00PM" autocomplete="off" style=" float: right" required="required" />
+        </div>
+        <div class="row" style="margin:10px;">
+            <label for="End" class="col-sm-3">End Date Time:</label>
+            <input type="datetime" class="col-sm-1 form-control" name="End.DateTime" value="Month/Day/Year 2:00PM" autocomplete="off" style=" float: right" required="required" />
+        </div>
+        <div class="row" style="margin:10px;">
+            <input type="submit" class="btn btn-primary" value="Submit" style=" float: right; width: 150px" />
+        </div>
+    </form>
+    <br />
+</div>
