@@ -24,6 +24,7 @@ namespace WebApplication1.Models
 
 
         [Required(ErrorMessage = "You need to give us the item you want")]
+        [Display(Name = "Item(s)")]
         public string Item { get; set; }
 
     }

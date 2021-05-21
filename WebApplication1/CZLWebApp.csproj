@@ -148,6 +148,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\Renter.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,6 +213,8 @@
     <Content Include="Views\CalendarEvent\BookEvent.cshtml" />
     <Content Include="Views\CalendarEvent\BookConsultation.cshtml" />
     <Content Include="Views\Equipment\Rent.cshtml" />
+    <Content Include="Views\Equipment\ViewRenters.cshtml" />
+    <Content Include="Views\Equipment\AddItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

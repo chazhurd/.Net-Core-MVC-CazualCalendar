@@ -15,3 +15,5 @@ C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.cs
 C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.csproj.CopyComplete
 C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.dll
 C:\Users\vanil\source\repos\WebApplication1\DataLibrary\obj\Debug\DataLibrary.pdb
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\mvcDB.dll
+C:\Users\vanil\source\repos\WebApplication1\DataLibrary\bin\Debug\mvcDB.pdb

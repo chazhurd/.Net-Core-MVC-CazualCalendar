@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Items]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [ItemId] NVARCHAR(50) NOT NULL, 
+    [ItemName] NVARCHAR(50) NOT NULL, 
+    [Quantity] NVARCHAR(50) NOT NULL, 
+    [ImgUrl] NVARCHAR(50) NOT NULL
+)
