@@ -29,5 +29,13 @@ namespace DataLibrary.BusinessLogic
             string sql = @"select Id, ItemId,ItemName,Quantity,ImgUrl from dbo.Items;";
             return ItemSqlDataAccess.LoadData<ItemMod>(sql);
         }
+
+        public static List<ItemMod> LoadSpecificItem(string specificity)
+        {
+            string spec = specificity;
+            string sql = @"select Id, ItemId,ItemName,Quantity,ImgUrl from dbo.Items where ItemId = '" + spec + "'";
+            return ItemSqlDataAccess.LoadData<ItemMod>(sql);
+
+        }
     }
 }

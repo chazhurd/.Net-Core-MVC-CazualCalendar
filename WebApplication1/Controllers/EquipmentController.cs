@@ -81,7 +81,48 @@ namespace WebApplication1.Controllers
             }
             return View();
         }
+        public ActionResult ViewItems()
+        {
+            var data = LoadItems();
+            List<ItemModel> items = new List<ItemModel>();
+            foreach (var row in data)
+            {
+                items.Add(new ItemModel
+                {
+                    ItemName = row.ItemName,
+                    Quantity = row.Quantity,
+                    ImgUrl = row.ImgUrl,
+                    ItemId = row.ItemId
+                });
+
+
+            }
+            return View(items);
+
+        }
+        [HttpGet]
+        public ActionResult ViewSpecific(string specificity)
+        {
+            var spec = specificity;
+            var data = LoadSpecificItem(spec);
+
+            List<ItemModel> items = new List<ItemModel>();
+            foreach (var row in data)
+            {
+                items.Add(new ItemModel
+                {
+                    ItemName = row.ItemName,
+                    Quantity = row.Quantity,
+                    ImgUrl = row.ImgUrl,
+                    ItemId = row.ItemId
+                });
+
+
+            }
+            return View(items);
+        }
+
+
+
     }
-
-
 }

@@ -1,9 +1,6 @@
 C:\Users\vanil\source\repos\WebApplication1\mvcDB\bin\Debug\myDatabases.dacpac
 C:\Users\vanil\source\repos\WebApplication1\mvcDB\bin\Debug\mvcDB.dll
 C:\Users\vanil\source\repos\WebApplication1\mvcDB\bin\Debug\mvcDB.pdb
-C:\Users\vanil\source\repos\WebApplication1\mvcDB\obj\Debug\Model.xml
-C:\Users\vanil\source\repos\WebApplication1\mvcDB\obj\Debug\refactor.xml
-C:\Users\vanil\source\repos\WebApplication1\mvcDB\obj\Debug\postdeploy.sql
-C:\Users\vanil\source\repos\WebApplication1\mvcDB\obj\Debug\predeploy.sql
 C:\Users\vanil\source\repos\WebApplication1\mvcDB\obj\Debug\mvcDB.dll
 C:\Users\vanil\source\repos\WebApplication1\mvcDB\obj\Debug\mvcDB.pdb
+C:\Users\vanil\source\repos\WebApplication1\mvcDB\obj\Debug\myDatabases.sqlprojAssemblyReference.cache

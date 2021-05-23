@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication1.Models.ItemModel>
+
+@{
+    ViewBag.Title = "ViewItems";
+}
+
+<h2>ViewItems</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgUrl)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgUrl)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+@using (Html.BeginForm("ViewSpecific", "Equipment", FormMethod.Get))
+{
+    <input type="text" name="specifity" id="specificity" />
+
+    <input type="submit" value="specificity" />
+
+}
+@*//TO DO SEARCH FOR SPECIFIC*@
+
+
+
+@*    <div style="display: inline-block; margin-left: 5px; float: right">
+        <button class="btn btn-primary" style="margin-top:10px; margin-left: 10px;" onclick="location.href = '@Url.Action("ViewSpecific", "Equipment", new { identifier = @[text })'">Edit</button>
+    </div>*@
+
+<a style="cursor: pointer; text-decoration: none; width: 100%" class="col-sm-4" onclick="location.href = '@Url.Action("ViewSpecific", "Equipment")'">Load Specific</a>
