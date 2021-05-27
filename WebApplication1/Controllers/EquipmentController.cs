@@ -81,6 +81,25 @@ namespace WebApplication1.Controllers
             }
             return View();
         }
+
+        public ActionResult Edit(string Id)
+        {
+            var data = LoadSpecificItem(Id);
+            List<ItemModel> items = new List<ItemModel>();
+            foreach (var row in data)
+            {
+                items.Add(new ItemModel
+                {
+                    ItemName = row.ItemName,
+                    Quantity = row.Quantity,
+                    ImgUrl = row.ImgUrl,
+                    ItemId = row.ItemId
+                });
+
+
+            }
+            return View(items);
+        }
         public ActionResult ViewItems()
         {
             var data = LoadItems();
@@ -100,10 +119,11 @@ namespace WebApplication1.Controllers
             return View(items);
 
         }
-        [HttpGet]
-        public ActionResult ViewSpecific(string specificity)
+
+        public ActionResult ViewSpecific(string ttry)
         {
-            var spec = specificity;
+            
+            var spec = ttry;
             var data = LoadSpecificItem(spec);
 
             List<ItemModel> items = new List<ItemModel>();
@@ -122,7 +142,27 @@ namespace WebApplication1.Controllers
             return View(items);
         }
 
+        public ActionResult checkUp()
+        {
 
+            var spec = Request.QueryString["specifity"].ToString();
+            var data = LoadSpecificItem(spec);
+
+            List<ItemModel> items = new List<ItemModel>();
+            foreach (var row in data)
+            {
+                items.Add(new ItemModel
+                {
+                    ItemId = row.ItemId,
+                    ItemName = row.ItemName,
+                    Quantity = row.Quantity,
+                    ImgUrl = row.ImgUrl
+                });
+
+
+            }
+            return View(items);
+        }
 
     }
 }

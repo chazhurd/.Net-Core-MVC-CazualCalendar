@@ -216,7 +216,8 @@
     <Content Include="Views\Equipment\ViewRenters.cshtml" />
     <Content Include="Views\Equipment\AddItem.cshtml" />
     <Content Include="Views\Equipment\ViewItems.cshtml" />
-    <Content Include="Views\Equipment\ViewSpecific.cshtml" />
+    <Content Include="Views\Equipment\checkUp.cshtml" />
+    <Content Include="Views\Equipment\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
