@@ -81,9 +81,10 @@ namespace WebApplication1.Controllers
             }
             return View();
         }
-
+        [HttpGet]
         public ActionResult Edit(string Id)
         {
+            ViewData["edited"] = false;
             var data = LoadSpecificItem(Id);
             List<ItemModel> items = new List<ItemModel>();
             foreach (var row in data)
@@ -100,8 +101,34 @@ namespace WebApplication1.Controllers
 
             return View(items[0]);
         }
+        [HttpPost]
+        public ActionResult Edit(ItemModel item)
+        {
+            ViewData["edited"] = true;
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    int recordsCreated = UpdateSpecificItem(item.ItemId,
+                        item.ItemName,
+                        item.Quantity,
+                        item.ImgUrl);
+                    return View();
+                }
+                catch
+                {
+                    return View("Error");
+                    
+                }
+            }
+            return View("Error");
+         
+ 
+        }
         public ActionResult ViewItems()
         {
+            ViewData["Admin"] = false;
             var data = LoadItems();
             List<ItemModel> items = new List<ItemModel>();
             foreach (var row in data)

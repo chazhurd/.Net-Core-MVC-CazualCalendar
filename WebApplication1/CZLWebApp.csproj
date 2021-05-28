@@ -171,13 +171,13 @@
     <Content Include="Imgs\cazual.png" />
     <Content Include="Imgs\contact.jpg" />
     <Content Include="Imgs\headphones.jpg" />
-    <Content Include="Imgs\lense.jpg" />
+    <Content Include="Imgs\123.jpg" />
     <Content Include="Imgs\MAIN-dark-studio.jpg" />
     <Content Include="Imgs\neonLine.png" />
     <Content Include="Imgs\partay.jpg" />
     <Content Include="Imgs\pnwBubble.png" />
     <Content Include="Imgs\recordingDark.jpg" />
-    <Content Include="Imgs\wrappedUp.jpg" />
+    <Content Include="Imgs\345.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Files\credentials.json" />

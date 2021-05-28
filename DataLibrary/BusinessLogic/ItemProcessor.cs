@@ -37,5 +37,20 @@ namespace DataLibrary.BusinessLogic
             return ItemSqlDataAccess.LoadData<ItemMod>(sql);
 
         }
+
+        public static int UpdateSpecificItem(string itemId, string itemName, int quantity, string imgUrl)
+        {
+            ItemMod data = new ItemMod
+            {
+                ItemId = itemId,
+                ItemName = itemName,
+                Quantity = quantity,
+                ImgUrl = imgUrl
+            };
+
+            string sql = "UPDATE dbo.Items Set ItemName = '"+itemName+"', Quantity = '"+quantity+"', ImgUrl = '"+imgUrl+"' Where ItemId = '"+itemId+"';";
+            return ItemSqlDataAccess.SaveData(sql, data);
+
+        }
     } 
 }
