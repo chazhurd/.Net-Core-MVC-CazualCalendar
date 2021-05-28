@@ -96,9 +96,9 @@ namespace WebApplication1.Controllers
                     ItemId = row.ItemId
                 });
 
-
             }
-            return View(items);
+
+            return View(items[0]);
         }
         public ActionResult ViewItems()
         {
