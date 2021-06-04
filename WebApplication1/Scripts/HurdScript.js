@@ -48,5 +48,14 @@ function MovePartyLeft() {
                 .fromTo(PartyPic, 20, { left: "-590px" }, { left: "-70px" });
         }, 41000);
     }
+}
 
+
+function itemAdded() {
+    console.log("itemAdded init");
+    var cartImage = document.getElementById("CartImage");
+    cartImage.src = "/Imgs/addedItem.png";
+    setTimeout(() => {
+        cartImage.src = "/Imgs/addToCart.png"
+    }, 1300);
 }

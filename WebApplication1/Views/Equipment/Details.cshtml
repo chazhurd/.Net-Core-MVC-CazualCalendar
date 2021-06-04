@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication1.Models.ItemModel>
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .details{
+        font-size: 18px;
+        color: white;
+        margin: 5px;
+    }
+</style>
+<h2>Details</h2>
+
+
+<h2 style="color: dodgerblue; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">View Cazual Rental Equipment</h2>
+<div id="container" style="background-color:dimgrey; overflow-x: hidden">
+
+    @foreach (var item in Model)
+    {
+        <div class="details">Item Id: @Html.DisplayFor(modelItem => item.ItemId)</div>
+        <hr />
+        <div class="details">Item Name: @Html.DisplayFor(modelItem => item.ItemName)</div>
+        <hr />
+        <div class="details">Image: @Html.DisplayFor(modelItem => item.ImgUrl) <div style=""><img src=@("/Imgs/" + @Html.DisplayFor(modelItem => item.ImgUrl)) width="50%" /></div></div>
+        <hr/>
+        <div class="details">
+            Quantity: @Html.DisplayFor(modelItem => item.Quantity)<br />
+            <a href="/Equipment/ViewItems"><h3 style="float:right"><b>Back</b></h3></a>
+
+        </div>
+    }
+      
+    
+                 
+
+
+    </div>

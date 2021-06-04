@@ -119,16 +119,38 @@ namespace WebApplication1.Controllers
                 catch
                 {
                     return View("Error");
-                    
+
                 }
             }
             return View("Error");
-         
- 
+
+
+        }
+        public ActionResult Details(string id)
+        {
+            ViewBag.Title = "Details";
+            ViewData["Admin"] = true;
+            var data = LoadSpecificItem(id);
+
+            List<ItemModel> items = new List<ItemModel>();
+            foreach (var row in data)
+            {
+                items.Add(new ItemModel
+                {
+                    ItemId = row.ItemId,
+                    ItemName = row.ItemName,
+                    Quantity = row.Quantity,
+                    ImgUrl = row.ImgUrl
+                });
+
+
+            }
+            return View(items);
+
         }
         public ActionResult ViewItems()
         {
-            ViewData["Admin"] = false;
+            ViewData["Admin"] = true;
             var data = LoadItems();
             List<ItemModel> items = new List<ItemModel>();
             foreach (var row in data)
@@ -149,7 +171,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult ViewSpecific(string ttry)
         {
-            
+
             var spec = ttry;
             var data = LoadSpecificItem(spec);
 
@@ -189,6 +211,35 @@ namespace WebApplication1.Controllers
 
             }
             return View(items);
+        }
+
+        public void AddToCart(string id)
+        {
+
+
+            //adding data to session
+            //assuming the method below will return list of Products
+
+            var products = LoadSpecificItem(id);
+
+            //Store the products to a session
+
+            Session["products"] = products;
+
+
+            var inputted = Session["products"] as List<ItemModel>;
+            Console.Write(inputted);
+
+            //To get what you have stored to a session
+
+            //var products = Session["products"] as List<ItemModel>;
+
+            //to clear the session value
+
+            //Session["products"] = null;
+            //return View();
+
+        
         }
 
     }

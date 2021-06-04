@@ -154,6 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imgs\addedItem.png" />
     <Content Include="Imgs\bookBackground.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -218,6 +219,7 @@
     <Content Include="Views\Equipment\ViewItems.cshtml" />
     <Content Include="Views\Equipment\checkUp.cshtml" />
     <Content Include="Views\Equipment\Edit.cshtml" />
+    <Content Include="Views\Equipment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
