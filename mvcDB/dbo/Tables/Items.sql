@@ -4,5 +4,6 @@
     [ItemId] NVARCHAR(50) NOT NULL, 
     [ItemName] NVARCHAR(50) NOT NULL, 
     [Quantity] NVARCHAR(50) NOT NULL, 
-    [ImgUrl] NVARCHAR(50) NOT NULL
+    [ImgUrl] NVARCHAR(50) NOT NULL, 
+    [Price] FLOAT NOT NULL
 )

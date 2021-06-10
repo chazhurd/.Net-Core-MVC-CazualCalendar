@@ -76,7 +76,8 @@ namespace WebApplication1.Controllers
                 int recordsCreated = CreateItem(item.ItemId,
                     item.ItemName,
                     item.Quantity,
-                    item.ImgUrl);
+                    item.ImgUrl, 
+                    item.Price);
                 ItemAdded();
             }
             return View();
@@ -94,7 +95,8 @@ namespace WebApplication1.Controllers
                     ItemName = row.ItemName,
                     Quantity = row.Quantity,
                     ImgUrl = row.ImgUrl,
-                    ItemId = row.ItemId
+                    ItemId = row.ItemId,
+                    Price = row.Price
                 });
 
             }
@@ -113,7 +115,8 @@ namespace WebApplication1.Controllers
                     int recordsCreated = UpdateSpecificItem(item.ItemId,
                         item.ItemName,
                         item.Quantity,
-                        item.ImgUrl);
+                        item.ImgUrl,
+                        item.Price);
                     return View();
                 }
                 catch
@@ -140,7 +143,8 @@ namespace WebApplication1.Controllers
                     ItemId = row.ItemId,
                     ItemName = row.ItemName,
                     Quantity = row.Quantity,
-                    ImgUrl = row.ImgUrl
+                    ImgUrl = row.ImgUrl,
+                    Price = row.Price
                 });
 
 
@@ -160,7 +164,8 @@ namespace WebApplication1.Controllers
                     ItemName = row.ItemName,
                     Quantity = row.Quantity,
                     ImgUrl = row.ImgUrl,
-                    ItemId = row.ItemId
+                    ItemId = row.ItemId,
+                    Price = row.Price
                 });
 
 
@@ -240,6 +245,11 @@ namespace WebApplication1.Controllers
             //return View();
 
         
+        }
+
+        public ActionResult CheckOut()
+        {
+            return View();
         }
 
     }

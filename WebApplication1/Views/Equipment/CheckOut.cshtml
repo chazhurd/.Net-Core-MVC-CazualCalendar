@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cazual Check Out</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        var userIP;
+        //got to do this in order for elements to be loaded.
+        function loadItems() {
+            setTimeout(() => {
+                ShowCart();
+            }, 1000)
+        }
+
+
+        function checkKey() {
+            $.getJSON('https://api.bigdatacloud.net/data/ip-geolocation?key=' + '5a273d09f0d7448cbffb73056953fc83', function (data) {
+                userIP = data.ip;
+                console.log(userIP);
+            });
+        }
+
+        function ShowCart() {
+            checkKey();
+            console.log(userIP)
+            var userCart = sessionStorage.getItem(userIP)
+            var cartDiv = document.getElementById("Cart");
+            cartDiv.innerHTML += "cart = " + userCart;//comma seperated
+            var itemArray = userCart.split(',');
+            var MyTable, row, cell1, cell2, cell3, cellSum, removeFunc;
+            var r = 0, sum = 0;
+            for (var x = 0; x <= (itemArray.length)/2; x+=3) {
+                MyTable = document.getElementById("checkOutCart");
+                row = MyTable.insertRow(r);
+                cell1 = row.insertCell(0);
+                cell2 = row.insertCell(1);
+                cell3 = row.insertCell(2);
+                removeFunc = "removeItem('" + itemArray[x] + "')";
+                cell1.style.color = 'white';
+                cell1.innerHTML = itemArray[x].toString() + " <br> " + "$"+ itemArray[x+2].toString();
+                cell2.innerHTML = "<img src= /Imgs/" + itemArray[x] + " width=90% style='padding: 15px; max-width: 200px'>";
+                cell3.innerHTML = "<h4 onclick=" + removeFunc + " style='color:blue; padding: 10px; cursor: pointer'>Remove</h4>";
+                r++;
+                sum += parseFloat(itemArray[x + 2]);
+                
+            }
+            //TO DO wrap up checkout process. clean up random text under table? finalize checkout. 
+            row = MyTable.insertRow(r);
+            cellSum = row.insertCell(0);
+            cellSum.innerHTML = "Total: " +sum;
+        }
+
+        function removeFunc() {
+
+        }
+
+    </script>
+</head>
+<body onload="loadItems()">
+    <div id="Cart">
+        <table id="checkOutCart" style="text-align:center; width: 100%; max-width: 100%; margin-bottom: 20px">
+        </table>
+    </div>
+    <button onclick="getItems('checkup')">Hit me</button>
+</body>
+</html>

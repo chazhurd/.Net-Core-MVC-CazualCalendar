@@ -17,7 +17,9 @@ namespace WebApplication1.Models
         [Required(ErrorMessage = "You need to fill this in")]
         public int Quantity { get; set; }
         [Required(ErrorMessage = "You need to fill this in")]
-        [Display(Name = "Photo")]
+        [Display(Name = "Photo Url")]
         public string ImgUrl { get; set; }
+
+        public float Price { get; set; }
     }
 }

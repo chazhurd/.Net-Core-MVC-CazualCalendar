@@ -220,6 +220,7 @@
     <Content Include="Views\Equipment\checkUp.cshtml" />
     <Content Include="Views\Equipment\Edit.cshtml" />
     <Content Include="Views\Equipment\Details.cshtml" />
+    <Content Include="Views\Equipment\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
