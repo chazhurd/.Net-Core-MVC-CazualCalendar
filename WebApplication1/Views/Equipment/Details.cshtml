@@ -13,8 +13,7 @@
 <h2>Details</h2>
 
 
-<h2 style="color: dodgerblue; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">View Cazual Rental Equipment</h2>
-<div id="container" style="background-color:dimgrey; overflow-x: hidden">
+<div id="container" style="background-color:dimgrey; overflow-x: hidden; color:white">
 
     @foreach (var item in Model)
     {
@@ -22,7 +21,7 @@
         <hr />
         <div class="details">Item Name: @Html.DisplayFor(modelItem => item.ItemName)</div>
         <hr />
-        <div class="details">Image: @Html.DisplayFor(modelItem => item.ImgUrl) <div style=""><img src=@("/Imgs/" + @Html.DisplayFor(modelItem => item.ImgUrl)) width="50%" /></div></div>
+        <div class="details">Image: @Html.DisplayFor(modelItem => item.ImgUrl) <div style=""><img src=@("/Imgs/" + @Html.DisplayFor(modelItem => item.ImgUrl)) /></div></div>
         <hr />
         <div class="details"> Quantity: @Html.DisplayFor(modelItem => item.Quantity)<br /></div>
         <hr />

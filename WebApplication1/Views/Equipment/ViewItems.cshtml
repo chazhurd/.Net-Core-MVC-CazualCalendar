@@ -1,187 +1,228 @@
 ﻿@model IEnumerable<WebApplication1.Models.ItemModel>
 
-@{
+    @{
     ViewBag.Title = "ViewItems";
-}
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cazual Items</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script>
-        var userIP;
-        var cartItems = [];
-        var numItems = 0;
-
-        function itemAdded(id, desc, price) {
-            console.log("itemAdded init  " + id);
-            const name = "" + id + "";
-
-            const cartImage = document.getElementById(name);
-
-            cartImage.src = "/Imgs/addedItem.png";
+    }
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Cazual Items</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script>
+           
+            var userIP;
+            var cartItems = [];
+            var numItems = 0;
+            checkKey();
             setTimeout(() => {
-                cartImage.src = "/Imgs/addToCart.png"
-            }, 400);
+                readCart();
+            }, 300)
 
-            var cart = document.getElementById("cartPreview");
-            cart.style.display = "block";
-            var MyTable = document.getElementById("cartDescription");
-            var row = MyTable.insertRow(numItems);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var removeFunc = "removeItem('" + id + "')";
-            cell1.style.color = 'white';
-            cell1.innerHTML = desc;
-            cell2.innerHTML = "<img src= /Imgs/" + id + " width=90% style='padding: 15px; max-width: 200px'>";
-            cell3.innerHTML = "<h4 onclick=" + removeFunc + " style='color:blue; padding: 10px; cursor: pointer'>Remove</h4>";
-            numItems++;
 
-            cartItems.push(id, desc, price);
+            function itemAdded(id, desc, price) {
+            
+                console.log("itemAdded init  " + id);
+                const name = "" + id + "";
 
-        }
+                const cartImage = document.getElementById(name);
 
-        function removeItem(id) {
-            const index = cartItems.indexOf(id);
-            if (index > -1) {
-                cartItems.splice(index, 1);
-            }
+                cartImage.src = "/Imgs/addedItem.png";
+                setTimeout(() => {
+                    cartImage.src = "/Imgs/addToCart.png"
+                }, 400);
 
-            var MyTable = document.getElementById("cartDescription");
-            var found = false;
-            var toFind = "<img src=\"/Imgs/" + id + "\" width=\"90%\" style=\"padding: 15px; max-width: 200px\">"
-            for (var i = 0, row; row = MyTable.rows[i]; i++) {
-                //iterate through rows
-                //rows would be accessed using the "row" variable assigned in the for loop
-                if (found)
-                    break;
+                var cart = document.getElementById("cartPreview");
+                cart.style.display = "block";
+                var MyTable = document.getElementById("cartDescription");
+                var row = MyTable.insertRow(numItems);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var removeFunc = "removeItem('" + id + "')";
+                cell1.style.color = 'white';
+                cell1.innerHTML = desc;
+                cell2.innerHTML = "<img src= /Imgs/" + id + " width=90% style='padding: 15px; max-width: 200px'>";
+                cell3.innerHTML = "<h4 onclick=" + removeFunc + " style='color:blue; padding: 10px; cursor: pointer'>Remove</h4>";
+                numItems++;
 
-                for (var j = 0, col; col = row.cells[j]; j++) {
-                    if (col.innerHTML == toFind.toString()) {
-                        MyTable.deleteRow(i);
-                        found = true;
-                        numItems--;
+                cartItems.push(id, desc, price);
+
+            }   
+
+            function removeItem(id) {
+                const index = cartItems.indexOf(id);
+                if (index > -1) {
+                        cartItems.splice(index, 1);
+                    }
+
+                var MyTable = document.getElementById("cartDescription");
+                var found = false;
+                var toFind = "<img src=\"/Imgs/" + id + "\" width=\"90%\" style=\"padding: 15px; max-width: 200px\">"
+                for (var i = 0, row; row = MyTable.rows[i]; i++) {
+                    //iterate through rows
+                    //rows would be accessed using the "row" variable assigned in the for loop
+                    if (found)
                         break;
+
+                    for (var j = 0, col; col = row.cells[j]; j++) {
+                        if (col.innerHTML == toFind.toString()) {
+                            MyTable.deleteRow(i);
+                            found = true;
+                            numItems--;
+                            break;
+                        }
                     }
                 }
+                if (numItems === 0) {
+                    var cartPreview = document.getElementById("cartPreview");
+                    cartPreview.style.display = "none";
+                }
             }
-            if (numItems === 0) {
-                var cartPreview = document.getElementById("cartPreview");
-                cartPreview.style.display = "none";
-            }
-        }
 
-        function cartToSession(id) {
-            checkKey();
-            if (userIP != "") {
-                sessionStorage.setItem(userIP, cartItems);
-            } else {
-                var rando = Math.random();
-                sessionStorage.setItem(rando, cartItems);
+            function cartToSession() {
+                debugger;
+                if (userIP != "") {
+                    sessionStorage.setItem(userIP, cartItems);
+                } else {
+                    var rando = Math.random();
+                    sessionStorage.setItem(rando, cartItems);
+                }
+                window.location.href = "CheckOut";
             }
-            window.location.href = "CheckOut";
-        }
 
-        function checkKey() {
-            $.getJSON('https://api.bigdatacloud.net/data/ip-geolocation?key=' + '5a273d09f0d7448cbffb73056953fc83', function (data) {
-               
+            function checkKey() {
+                $.getJSON('https://api.bigdatacloud.net/data/ip-geolocation?key=' + '5a273d09f0d7448cbffb73056953fc83', function (data) {
+
                 userIP = data.ip;
                 console.log(userIP);
 
-            });
-        }
-        function removeSessionItem() {
-            sessionStorage.removeItem(userIP);
-        }
-        function cartCheck() {
-            var xy = 0;
-            debugger;
-            var text = sessionStorage.getItem(userIP);
-            var tempArray = text.split(',');
-            while (tempArray[xy] != null) {
-                document.getElementById("jsonTest").innerHTML += tempArray[xy].toString() + "<br>";
-                xy++;
+                });
             }
-        }
 
-    </script>
-    <style>
-        .center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
 
-<h2 style="color: dodgerblue; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">View Cazual Rental Equipment</h2>
-<div id="container" style="background-color:dimgrey; overflow-x: hidden" onload="checkKey()">
+            function readCart() {
+                    var currentItems = sessionStorage.getItem(userIP);
+                    if (currentItems.length > 0) {
+                        var cart = document.getElementById("cartPreview");
+                        cart.style.display = "block";
+                        var userCart = sessionStorage.getItem(userIP);
+                        var items = userCart.split(",");
+                        debugger;
 
-    @using (Html.BeginForm("checkUp", "Equipment", FormMethod.Get))
-    {
+                        for (var m = 0; m < items.length; m++) {
+                            cartItems.push(items[m].toString());
+                        }
+
+                        var itemArray = userCart.split(',');
+                        var MyTable, row, cell1, cell2, cell3, removeFunc;
+                        var r = 0, sum = 0;
+                        for (var x = 0; x <= (itemArray.length) - 3; x += 3) {
+                            MyTable = document.getElementById("cartDescription");
+                            row = MyTable.insertRow(r);
+                            cell1 = row.insertCell(0);
+                            cell2 = row.insertCell(1);
+                            cell3 = row.insertCell(2);
+                            removeFunc = "removeItem('" + itemArray[x] + "')";
+                            cell1.style.color = 'white';
+                            cell1.innerHTML = itemArray[x + 1].toString() + " <br> " + "$" + itemArray[x + 2].toString() + ".00";
+                            cell2.innerHTML = "<img src= /Imgs/" + itemArray[x] + " width=90% style='padding: 15px; max-width: 200px'>";
+                            cell3.innerHTML = "<h4 onclick=" + removeFunc + " style='color:blue; padding: 10px; cursor: pointer'>Remove</h4>";
+                            r++;
+                            sum += parseFloat(itemArray[x + 2]);
+                        }
+                    }
+            }
+
+            function clearSearch(){
+            document.getElementById("specificity").value = "";
+            console.log('init')
+            }
+        </script>
+
+         
+        <style>
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @@media only screen and (min-width : 500px) {
+                #desktopButton {
+                    display: inline-block;
+                }
+            }
+        </style>
+    </head>
+
+
+    <h2 style="color: dodgerblue; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">View Cazual Rental Equipment</h2>
+    <div id="container" style="background-color:dimgrey; overflow-x: hidden" onload="checkKey()">
+
+        @using (Html.BeginForm("checkUp", "Equipment", FormMethod.Get))
+        {
         <div>
-            <input type="submit" value="Search" style="border-radius: 5px; background-color: beige; margin-top: 10px" />
-            <input type="text" name="specifity" id="specificity" style=" border-radius: 5px; margin-top: 10px" />
+            <input type="submit" value="Search" style="border-radius: 5px; background-color: beige; margin-top: 10px; display: none" id="desktopButton" />
+            <input type="text" name="specifity" id="specificity" style=" border-radius: 5px; margin-top: 10px" value="Search Cazual Items" onclick="clearSearch()" />
         </div>
-    }
-    @if ((bool)ViewData["Admin"])
-    {
+        }
+        @if ((bool)ViewData["Admin"])
+        {
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-    }
-    <table class="table" style="text-align: center">
-        <tr>
-            <th style="text-align: center;">
-                @Html.DisplayNameFor(model => model.ItemName)
-            </th>
-            <th style="text-align: center">
-                Image
-                <br />Click For Details
-            </th>
-            <th>
-                Cart
-            </th>
-            <th></th>
-        </tr>
+        }
+        <table class="table" style="text-align: center">
+            <tr>
+                <th style="text-align: center;">
+                    @Html.DisplayNameFor(model => model.ItemName)
+                </th>
+                <th style="text-align: center">
+                    Image
+                    <br />Click For Details
+                </th>
+                <th>
+                    Cart
+                </th>
+                <th></th>
+            </tr>
 
-        @foreach (var item in Model)
-        {
+            @foreach (var item in Model)
+            {
             <tr>
                 <td style="color:white">
                     @Html.DisplayFor(modelItem => item.ItemName)
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", new { id=item.ItemId })">
-                        <img src=@("/Imgs/" + @Html.DisplayFor(modelItem => item.ImgUrl)) width="160" height="90" />
+                    <a href="@Url.Action(" Details", new { id=item.ItemId })">
+                        <img src=@("/Imgs/" + @Html.DisplayFor(modelItem=> item.ImgUrl)) width="160" height="90" />
                     </a>
                 </td>
                 <td style="font-size: 3vw">
-                    
+
                     <img src="~/Imgs/addToCart.png" width="40" onclick="itemAdded('@item.ImgUrl','@item.ItemName', '@item.Price')" style="margin-top: 20%; cursor:pointer" id=@item.ImgUrl />
                 </td>
                 @if ((bool)ViewData["Admin"])
                 {
-                    <td>
+                <td>
 
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
 
-                    </td>
+                </td>
                 }
             </tr>
-        }
+            }
 
-    </table>
-   
-    <div id="cartPreview" style="display:none; background-color: lightslategrey; border: 4px">
-        <div><img src="~/Imgs/checkout.png" width="200" style="cursor:pointer;" onclick="cartToSession()" class="center"></div>
-        <h2 style="text-align: center"> Cart Preview</h2>
-        <div id="description">
-            <table id="cartDescription" style="text-align:center; width: 100%; max-width: 100%; margin-bottom: 20px">
-            </table>
+        </table>
+
+        <div id="cartPreview" style="display:none; background-color: lightslategrey; border: 4px">
+            <div><img src="~/Imgs/checkout.png" width="200" style="cursor:pointer;" onclick="cartToSession()" class="center"></div>
+            <h2 style="text-align: center"> Cart Preview</h2>
+            <div id="description">
+                <table id="cartDescription" style="text-align:center; width: 100%; max-width: 100%; margin-bottom: 20px">
+                </table>
+            </div>
+
         </div>
-
     </div>
-</div>
